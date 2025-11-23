@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    {% block title %}
+      TODO App Index
+    {% endblock %}
+  </title>
+</head>
+<body>
+  <header>
+      {% include "components/navbar.html" %}
+  </header>
+
+  <main>
+    {% block main %}
+    {% endblock %}
+  </main>
+
+  <footer>
+    {% block footer %}
+      &copy; Django TODO App
+    {% endblock %}
+  </footer>
+</body>
+</html>
