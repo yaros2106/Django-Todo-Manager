@@ -1,8 +1,8 @@
 from django.urls import path
 
-from todo_list.views import index_view
+from todo_list.views import ToDoListIndexView
 
 app_name = "todo_list"
 urlpatterns = [
-    path("", index_view, name="index"),
+    path("", ToDoListIndexView.as_view(), name="index"),
 ]
