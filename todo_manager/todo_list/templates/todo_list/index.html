@@ -1,9 +1,21 @@
 {% extends 'todo_list/base.html' %}
 
 {% block title %}
-	ToDo List App
+  ToDo List App
 {% endblock %}
 
 {% block main %}
-	<h1>ToDo List App</h1>
+  <h1>ToDo List App</h1>
+  <h2>ToDos:</h2>
+  <ul class="list-group">
+    {% for item in todo_items %}
+      <li class="list-group-item">{{ item.title }}
+        {% if item.done %}
+          ✅
+        {% else %}
+          ❌
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock %}
