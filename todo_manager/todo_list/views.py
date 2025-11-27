@@ -33,3 +33,9 @@ class ToDoListDoneView(ListView):
 
     def get_queryset(self):
         return super().get_queryset().filter(done=True)
+
+
+class ToDoDetailView(DetailView):
+    template_name = "todo_list/todoitem_detail.html"
+    model = ToDoItem
+    context_object_name = "todo_item"

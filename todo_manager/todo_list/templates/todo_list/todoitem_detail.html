@@ -1,0 +1,13 @@
+{% extends 'todo_list/base.html' %}
+
+{% block title %}
+  ToDo # {{ todo_item.pk }}
+{% endblock %}
+
+{% block main %}
+  <h3>Todo:</h3>
+  <div>
+    <div>Title: <strong>{{ todo_item.title }}</strong></div>
+    <div>Done: <strong>{{ todo_item.done }}</strong></div>
+  </div>
+{% endblock %}
