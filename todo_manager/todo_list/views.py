@@ -1,8 +1,19 @@
-from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import (
+    TemplateView,
+    ListView,
+    DetailView,
+)
 
 from todo_list.models import ToDoItem
+
+
+class ToDoListView(ListView):
+    template_name = "todo_list/index.html"
+    model = ToDoItem
+    context_object_name = "todo_items"
+
+    def get_queryset(self):
+        return super().get_queryset()[:3]
 
 
 class ToDoListIndexView(TemplateView):
