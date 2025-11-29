@@ -7,6 +7,7 @@
 {% block main %}
   <h1>ToDo List App</h1>
   <ul>
+    <li><a href="{% url 'todo_list:create' %}">Create a new ToDo Item</a></li>
     <li><a href="{% url 'todo_list:todoitem_list' %}">All ToDo Items</a></li>
     <li><a href="{% url 'todo_list:done' %}">Done ToDo Items</a></li>
   </ul>

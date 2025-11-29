@@ -2,8 +2,10 @@ from django.views.generic import (
     TemplateView,
     ListView,
     DetailView,
+    CreateView,
 )
 
+from todo_list.forms import ToDoItemForm
 from todo_list.models import ToDoItem
 
 
@@ -39,3 +41,8 @@ class ToDoDetailView(DetailView):
     template_name = "todo_list/todoitem_detail.html"
     model = ToDoItem
     context_object_name = "todo_item"
+
+
+class ToDoItemCreateView(CreateView):
+    model = ToDoItem
+    form_class = ToDoItemForm
