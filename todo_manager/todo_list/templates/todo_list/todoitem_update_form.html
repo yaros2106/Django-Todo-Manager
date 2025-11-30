@@ -1,0 +1,21 @@
+{% extends 'todo_list/base.html' %}
+
+{% block title %}
+  Update ToDo #{{ todo_item.id }}
+{% endblock %}
+
+{% block main %}
+  <h2>Update item - <strong>{{ todo_item.title }}</strong>:</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update">
+  </form>
+  <a
+    type="button"
+    class="btn btn-outline-secondary my-4"
+    href="{% url 'todo_list:todoitem_list' %}"
+  >
+    Back to All ToDo Items
+  </a>
+{% endblock %}

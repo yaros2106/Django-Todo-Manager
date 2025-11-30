@@ -17,3 +17,12 @@ class ToDoItemCreateForm(forms.ModelForm):
         labels = {
             "title": "Task title",
         }
+
+
+class ToDoItemUpdateForm(forms.ModelForm):
+    class Meta(ToDoItemCreateForm.Meta):
+        fields = (
+            "title",
+            "description",
+            "done",
+        )
