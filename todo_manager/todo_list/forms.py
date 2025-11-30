@@ -4,7 +4,7 @@ from django.forms import Textarea
 from todo_list.models import ToDoItem
 
 
-class ToDoItemForm(forms.ModelForm):
+class ToDoItemCreateForm(forms.ModelForm):
     class Meta:
         model = ToDoItem
         fields = (

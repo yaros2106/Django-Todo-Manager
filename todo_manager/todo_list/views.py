@@ -5,7 +5,7 @@ from django.views.generic import (
     CreateView,
 )
 
-from todo_list.forms import ToDoItemForm
+from todo_list.forms import ToDoItemCreateForm
 from todo_list.models import ToDoItem
 
 
@@ -45,4 +45,4 @@ class ToDoDetailView(DetailView):
 
 class ToDoItemCreateView(CreateView):
     model = ToDoItem
-    form_class = ToDoItemForm
+    form_class = ToDoItemCreateForm
