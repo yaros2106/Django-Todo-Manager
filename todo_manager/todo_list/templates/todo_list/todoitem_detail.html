@@ -19,5 +19,12 @@
   >
     Update ToDo
   </a>
+  <a
+    type="button"
+    class="btn btn-danger btn-sm my-4"
+    href="{% url 'todo_list:delete' pk=todo_item.pk %}"
+  >
+    Delete ToDo
+  </a>
 
 {% endblock %}

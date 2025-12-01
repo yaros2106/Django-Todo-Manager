@@ -1,9 +1,11 @@
+from django.urls import reverse_lazy
 from django.views.generic import (
     TemplateView,
     ListView,
     DetailView,
     CreateView,
     UpdateView,
+    DeleteView,
 )
 
 from todo_list.forms import ToDoItemCreateForm, ToDoItemUpdateForm
@@ -54,3 +56,8 @@ class ToDoItemUpdateView(UpdateView):
     form_class = ToDoItemUpdateForm
     template_name_suffix = "_update_form"
     context_object_name = "todo_item"
+
+
+class ToDoItemDeleteView(DeleteView):
+    model = ToDoItem
+    success_url = reverse_lazy("todo_list:list")

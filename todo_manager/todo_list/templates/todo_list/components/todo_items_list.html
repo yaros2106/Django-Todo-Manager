@@ -12,13 +12,22 @@
         {% endif %}
       </div>
 
-      <a
-        type="button"
-        class="btn btn-outline-warning btn-sm"
-        href="{% url 'todo_list:update' pk=item.pk %}"
-      >
-        Edit
-      </a>
+      <div>
+        <a
+          type="button"
+          class="btn btn-warning btn-sm"
+          href="{% url 'todo_list:update' pk=item.pk %}"
+        >
+          Edit
+        </a>
+        <a
+          type="button"
+          class="btn btn-danger btn-sm"
+          href="{% url 'todo_list:delete' pk=item.pk %}"
+        >
+          Delete
+        </a>
+      </div>
 
     </li>
   {% endfor %}
