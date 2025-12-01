@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import (
     TemplateView,
@@ -17,6 +18,7 @@ class ToDoListView(ListView):
     model = ToDoItem
     context_object_name = "todo_items"
 
+    # TODO: custom qs, archived
     def get_queryset(self):
         return super().get_queryset()[:3]
 
@@ -26,7 +28,7 @@ class ToDoListIndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        todo_items = ToDoItem.objects.all()
+        todo_items = ToDoItem.objects.filter(archived=False)
         context["todo_items"] = todo_items
         return context
 
@@ -37,12 +39,12 @@ class ToDoListDoneView(ListView):
     context_object_name = "todo_items"
 
     def get_queryset(self):
-        return super().get_queryset().filter(done=True)
+        return super().get_queryset().filter(done=True, archived=False)
 
 
 class ToDoDetailView(DetailView):
     template_name = "todo_list/todoitem_detail.html"
-    model = ToDoItem
+    queryset = ToDoItem.objects.filter(archived=False)
     context_object_name = "todo_item"
 
 
@@ -61,3 +63,9 @@ class ToDoItemUpdateView(UpdateView):
 class ToDoItemDeleteView(DeleteView):
     model = ToDoItem
     success_url = reverse_lazy("todo_list:list")
+
+    def form_valid(self, form):
+        success_url = self.get_success_url()
+        self.object.archived = True
+        self.object.save()
+        return HttpResponseRedirect(success_url)

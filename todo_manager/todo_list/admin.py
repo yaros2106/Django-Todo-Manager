@@ -10,8 +10,14 @@ class ToDoItemAdmin(admin.ModelAdmin):
         "title",
         "description",
         "done",
+        "visible",
     )
     list_display_links = (
         "id",
         "title",
     )
+
+    def visible(self, obj: ToDoItem) -> bool:
+        return not obj.archived
+
+    visible.boolean = True
